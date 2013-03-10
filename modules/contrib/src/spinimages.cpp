@@ -47,6 +47,7 @@
 #include <fstream>
 #include <limits>
 #include <set>
+#include <numeric>
 
 using namespace cv;
 using namespace std;

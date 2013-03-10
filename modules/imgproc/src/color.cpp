@@ -2902,7 +2902,7 @@ struct YUV420p2RGB888Invoker
         const int rangeBegin = range.begin() * 2;
         const int rangeEnd = range.end() * 2;
 
-        size_t uvsteps[2] = {width/2, stride - width/2};
+        size_t uvsteps[2] = {static_cast<size_t>(width/2), static_cast<size_t>(stride - width/2)};
         int usIdx = ustepIdx, vsIdx = vstepIdx;
 
         const uchar* y1 = my1 + rangeBegin * stride;
@@ -2970,7 +2970,7 @@ struct YUV420p2RGBA8888Invoker
         int rangeBegin = range.begin() * 2;
         int rangeEnd = range.end() * 2;
 
-        size_t uvsteps[2] = {width/2, stride - width/2};
+        size_t uvsteps[2] = {static_cast<size_t>(width/2), static_cast<size_t>(stride - width/2)};
         int usIdx = ustepIdx, vsIdx = vstepIdx;
 
         const uchar* y1 = my1 + rangeBegin * stride;

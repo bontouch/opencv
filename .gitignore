@@ -6,3 +6,7 @@ OpenCV4Tegra/
 .sw[a-z]
 .*.swp
 tags
+xcode/OpenCV-iOS/OpenCV-iOS.xcodeproj/project.xcworkspace
+xcode/OpenCV-iOS/OpenCV-iOS.xcodeproj/xcuserdata
+xcode/OpenCV-iOS/opencv2.xcodeproj/project.xcworkspace
+xcode/OpenCV-iOS/opencv2.xcodeproj/xcuserdata
