@@ -2589,6 +2589,7 @@
 		2A0CA07F16ECAFD00003C061 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = armv7;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				DSTROOT = /tmp/OpenCV_iOS.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2619,6 +2620,7 @@
 		2A0CA08016ECAFD00003C061 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = armv7;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				DSTROOT = /tmp/OpenCV_iOS.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2679,6 +2681,7 @@
 				2A0CA08016ECAFD00003C061 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2A0CA91E16ECDFDE0003C061 /* Build configuration list for PBXAggregateTarget "opencv2 Framework" */ = {
 			isa = XCConfigurationList;
@@ -2687,6 +2690,7 @@
 				2A0CA92016ECDFDE0003C061 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
