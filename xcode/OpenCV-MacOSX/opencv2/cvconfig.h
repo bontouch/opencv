@@ -9,6 +9,8 @@
 #ifndef OpenCV_iOS_cvconfig_h
 #define OpenCV_iOS_cvconfig_h
 
+#define HAVE_JPEG
+#define HAVE_PNG
 #define HAVE_COCOA
 
 
