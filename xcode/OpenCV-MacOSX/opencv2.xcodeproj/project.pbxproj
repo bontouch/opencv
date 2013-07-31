@@ -620,6 +620,8 @@
 		2A0CB36916ECFE580003C061 /* pngwtran.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A0CB34E16ECFE580003C061 /* pngwtran.c */; };
 		2A0CB36A16ECFE580003C061 /* pngwutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A0CB34F16ECFE580003C061 /* pngwutil.c */; };
 		2A0CB36B16ECFE580003C061 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 2A0CB35016ECFE580003C061 /* README */; };
+		2A9A835F17A9C571006991DF /* glob.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A9A835E17A9C571006991DF /* glob.cpp */; };
+		2A9A836117A9C585006991DF /* cap_msmf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A9A836017A9C585006991DF /* cap_msmf.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1383,6 +1385,8 @@
 		2A0CB34E16ECFE580003C061 /* pngwtran.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pngwtran.c; sourceTree = "<group>"; };
 		2A0CB34F16ECFE580003C061 /* pngwutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pngwutil.c; sourceTree = "<group>"; };
 		2A0CB35016ECFE580003C061 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		2A9A835E17A9C571006991DF /* glob.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = glob.cpp; sourceTree = "<group>"; };
+		2A9A836017A9C585006991DF /* cap_msmf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cap_msmf.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1535,6 +1539,7 @@
 		2A0CA98016ECEC870003C061 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				2A9A835E17A9C571006991DF /* glob.cpp */,
 				2A0CA98116ECEC870003C061 /* algorithm.cpp */,
 				2A0CA98216ECEC870003C061 /* alloc.cpp */,
 				2A0CA98316ECEC870003C061 /* arithm.cpp */,
@@ -1917,6 +1922,7 @@
 		2A0CAB6716ECF0380003C061 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				2A9A836017A9C585006991DF /* cap_msmf.cpp */,
 				2A0CAB6816ECF0380003C061 /* bitstrm.cpp */,
 				2A0CAB6916ECF0380003C061 /* bitstrm.hpp */,
 				2A0CAB6A16ECF0380003C061 /* cap.cpp */,
@@ -3190,6 +3196,8 @@
 				2A0CB36816ECFE580003C061 /* pngwrite.c in Sources */,
 				2A0CB36916ECFE580003C061 /* pngwtran.c in Sources */,
 				2A0CB36A16ECFE580003C061 /* pngwutil.c in Sources */,
+				2A9A835F17A9C571006991DF /* glob.cpp in Sources */,
+				2A9A836117A9C585006991DF /* cap_msmf.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -402,6 +402,10 @@
 		2A0CA91916ECDD250003C061 /* stereobm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A0CA2C716ECB5CB0003C061 /* stereobm.cpp */; };
 		2A0CA91A16ECDD320003C061 /* stereosgbm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A0CA2C816ECB5CB0003C061 /* stereosgbm.cpp */; };
 		2A0CA91B16ECDD320003C061 /* triangulate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A0CA2C916ECB5CB0003C061 /* triangulate.cpp */; };
+		2A9A835717A9C0BC006991DF /* glob.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A9A835617A9C0BC006991DF /* glob.cpp */; };
+		2A9A835A17A9C202006991DF /* cap_msmf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A9A835817A9C202006991DF /* cap_msmf.cpp */; };
+		2A9A835B17A9C202006991DF /* ios_conversions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A9A835917A9C202006991DF /* ios_conversions.mm */; };
+		2A9A835D17A9C21A006991DF /* clahe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A9A835C17A9C21A006991DF /* clahe.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1084,6 +1088,10 @@
 		2A0CA8F616ECDC850003C061 /* inpaint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = inpaint.cpp; sourceTree = "<group>"; };
 		2A0CA8F716ECDC850003C061 /* precomp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = precomp.cpp; sourceTree = "<group>"; };
 		2A0CA8F816ECDC850003C061 /* precomp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = precomp.hpp; sourceTree = "<group>"; };
+		2A9A835617A9C0BC006991DF /* glob.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = glob.cpp; sourceTree = "<group>"; };
+		2A9A835817A9C202006991DF /* cap_msmf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cap_msmf.cpp; sourceTree = "<group>"; };
+		2A9A835917A9C202006991DF /* ios_conversions.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ios_conversions.mm; sourceTree = "<group>"; };
+		2A9A835C17A9C21A006991DF /* clahe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = clahe.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1194,6 +1202,7 @@
 		2A0CA0BA16ECB0290003C061 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				2A9A835617A9C0BC006991DF /* glob.cpp */,
 				2A0CA0BB16ECB0290003C061 /* algorithm.cpp */,
 				2A0CA0BC16ECB0290003C061 /* alloc.cpp */,
 				2A0CA0BD16ECB0290003C061 /* arithm.cpp */,
@@ -1436,6 +1445,7 @@
 		2A0CA20516ECB4090003C061 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				2A9A835C17A9C21A006991DF /* clahe.cpp */,
 				2A0CA20616ECB4090003C061 /* _geom.h */,
 				2A0CA20716ECB4090003C061 /* _list.h */,
 				2A0CA20816ECB4090003C061 /* accum.cpp */,
@@ -1999,6 +2009,8 @@
 		2A0CA6ED16ECBCA50003C061 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				2A9A835817A9C202006991DF /* cap_msmf.cpp */,
+				2A9A835917A9C202006991DF /* ios_conversions.mm */,
 				2A0CA6EE16ECBCA50003C061 /* bitstrm.cpp */,
 				2A0CA6EF16ECBCA50003C061 /* bitstrm.hpp */,
 				2A0CA6F016ECBCA50003C061 /* cap.cpp */,
@@ -2515,6 +2527,10 @@
 				2A0CA91916ECDD250003C061 /* stereobm.cpp in Sources */,
 				2A0CA91A16ECDD320003C061 /* stereosgbm.cpp in Sources */,
 				2A0CA91B16ECDD320003C061 /* triangulate.cpp in Sources */,
+				2A9A835717A9C0BC006991DF /* glob.cpp in Sources */,
+				2A9A835A17A9C202006991DF /* cap_msmf.cpp in Sources */,
+				2A9A835B17A9C202006991DF /* ios_conversions.mm in Sources */,
+				2A9A835D17A9C21A006991DF /* clahe.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
