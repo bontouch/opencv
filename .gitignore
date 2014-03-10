@@ -1,10 +1,9 @@
+*.autosave
 *.pyc
-.DS_Store
-refman.rst
-OpenCV4Tegra/
 *.user
-.sw[a-z]
 .*.swp
+.DS_Store
+.sw[a-z]
 tags
 xcode/OpenCV-iOS/OpenCV-iOS.xcodeproj/project.xcworkspace
 xcode/OpenCV-iOS/OpenCV-iOS.xcodeproj/xcuserdata
@@ -12,3 +11,4 @@ xcode/OpenCV-iOS/opencv2.xcodeproj/project.xcworkspace
 xcode/OpenCV-iOS/opencv2.xcodeproj/xcuserdata
 xcode/OpenCV-MacOSX/opencv2.xcodeproj/project.xcworkspace
 xcode/OpenCV-MacOSX/opencv2.xcodeproj/xcuserdata
+tegra/
