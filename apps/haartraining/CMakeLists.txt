@@ -29,6 +29,9 @@ set(cvhaartraining_lib_src
   cvhaarclassifier.cpp
   cvhaartraining.cpp
   cvsamples.cpp
+  cvsamplesoutput.cpp
+  cvsamplesoutput.h
+  ioutput.h
   )
 
 add_library(opencv_haartraining_engine STATIC ${cvhaartraining_lib_src})
@@ -71,14 +74,14 @@ set_target_properties(opencv_performance PROPERTIES
 
 if(INSTALL_CREATE_DISTRIB)
   if(BUILD_SHARED_LIBS)
-    install(TARGETS opencv_haartraining RUNTIME DESTINATION ${OPENCV_BIN_INSTALL_PATH} CONFIGURATIONS Release COMPONENT main)
-    install(TARGETS opencv_createsamples RUNTIME DESTINATION ${OPENCV_BIN_INSTALL_PATH} CONFIGURATIONS Release COMPONENT main)
-    install(TARGETS opencv_performance RUNTIME DESTINATION ${OPENCV_BIN_INSTALL_PATH} CONFIGURATIONS Release COMPONENT main)
+    install(TARGETS opencv_haartraining RUNTIME DESTINATION ${OPENCV_BIN_INSTALL_PATH} CONFIGURATIONS Release COMPONENT dev)
+    install(TARGETS opencv_createsamples RUNTIME DESTINATION ${OPENCV_BIN_INSTALL_PATH} CONFIGURATIONS Release COMPONENT dev)
+    install(TARGETS opencv_performance RUNTIME DESTINATION ${OPENCV_BIN_INSTALL_PATH} CONFIGURATIONS Release COMPONENT dev)
   endif()
 else()
-  install(TARGETS opencv_haartraining RUNTIME DESTINATION ${OPENCV_BIN_INSTALL_PATH} COMPONENT main)
-  install(TARGETS opencv_createsamples RUNTIME DESTINATION ${OPENCV_BIN_INSTALL_PATH} COMPONENT main)
-  install(TARGETS opencv_performance RUNTIME DESTINATION ${OPENCV_BIN_INSTALL_PATH} COMPONENT main)
+  install(TARGETS opencv_haartraining RUNTIME DESTINATION ${OPENCV_BIN_INSTALL_PATH} COMPONENT dev)
+  install(TARGETS opencv_createsamples RUNTIME DESTINATION ${OPENCV_BIN_INSTALL_PATH} COMPONENT dev)
+  install(TARGETS opencv_performance RUNTIME DESTINATION ${OPENCV_BIN_INSTALL_PATH} COMPONENT dev)
 endif()
 
 if(ENABLE_SOLUTION_FOLDERS)

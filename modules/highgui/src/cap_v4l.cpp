@@ -102,7 +102,7 @@ I modified the following:
     autosetup_capture_mode_v4l2 -> autodetect capture modes for v4l2
   - Modifications are according with Video4Linux old codes
   - Video4Linux handling is automatically if it does not recognize a Video4Linux2 device
-  - Tested succesful with Logitech Quickcam Express (V4L), Creative Vista (V4L) and Genius VideoCam Notebook (V4L2)
+  - Tested successfully with Logitech Quickcam Express (V4L), Creative Vista (V4L) and Genius VideoCam Notebook (V4L2)
   - Correct source lines with compiler warning messages
   - Information message from v4l/v4l2 detection
 
@@ -113,7 +113,7 @@ I modified the following:
   - SN9C10x chip based webcams support
   - New methods are internal:
     bayer2rgb24, sonix_decompress -> decoder routines for SN9C10x decoding from Takafumi Mizuno <taka-qce@ls-a.jp> with his pleasure :)
-  - Tested succesful with Genius VideoCam Notebook (V4L2)
+  - Tested successfully with Genius VideoCam Notebook (V4L2)
 
 Sixth Patch: Sept 10, 2005 Csaba Kertesz sign@freemail.hu
 For Release:  OpenCV-Linux Beta5 OpenCV-0.9.7
@@ -123,7 +123,7 @@ I added the following:
   - Get and change V4L capture controls (hue, saturation, brightness, contrast)
   - New method is internal:
     icvSetControl -> set capture controls
-  - Tested succesful with Creative Vista (V4L)
+  - Tested successfully with Creative Vista (V4L)
 
 Seventh Patch: Sept 10, 2005 Csaba Kertesz sign@freemail.hu
 For Release:  OpenCV-Linux Beta5 OpenCV-0.9.7
@@ -132,7 +132,7 @@ I added the following:
   - Detect, get and change V4L2 capture controls (hue, saturation, brightness, contrast, gain)
   - New methods are internal:
     v4l2_scan_controls_enumerate_menu, v4l2_scan_controls -> detect capture control intervals
-  - Tested succesful with Genius VideoCam Notebook (V4L2)
+  - Tested successfully with Genius VideoCam Notebook (V4L2)
 
 8th patch: Jan 5, 2006, Olivier.Bornet@idiap.ch
 Add support of V4L2_PIX_FMT_YUYV and V4L2_PIX_FMT_MJPEG.
@@ -325,7 +325,6 @@ typedef struct CvCaptureCAM_V4L
    struct v4l2_control control;
    enum v4l2_buf_type type;
    struct v4l2_queryctrl queryctrl;
-   struct v4l2_querymenu querymenu;
 
    struct timeval timestamp;
 
@@ -641,24 +640,6 @@ static int autosetup_capture_mode_v4l(CvCaptureCAM_V4L* capture)
 
 #ifdef HAVE_CAMV4L2
 
-static void v4l2_scan_controls_enumerate_menu(CvCaptureCAM_V4L* capture)
-{
-//  printf (" Menu items:\n");
-  CLEAR (capture->querymenu);
-  capture->querymenu.id = capture->queryctrl.id;
-  for (capture->querymenu.index = capture->queryctrl.minimum;
-       (int)capture->querymenu.index <= capture->queryctrl.maximum;
-       capture->querymenu.index++)
-  {
-    if (0 == ioctl (capture->deviceHandle, VIDIOC_QUERYMENU,
-                     &capture->querymenu))
-    {
-//      printf (" %s\n", capture->querymenu.name);
-    } else {
-        perror ("VIDIOC_QUERYMENU");
-    }
-  }
-}
 
 static void v4l2_scan_controls(CvCaptureCAM_V4L* capture)
 {
@@ -723,8 +704,6 @@ static void v4l2_scan_controls(CvCaptureCAM_V4L* capture)
         capture->v4l2_exposure_max = capture->queryctrl.maximum;
       }
 
-      if (capture->queryctrl.type == V4L2_CTRL_TYPE_MENU)
-        v4l2_scan_controls_enumerate_menu(capture);
 
     } else {
 
@@ -792,9 +771,6 @@ static void v4l2_scan_controls(CvCaptureCAM_V4L* capture)
         capture->v4l2_exposure_min = capture->queryctrl.minimum;
         capture->v4l2_exposure_max = capture->queryctrl.maximum;
       }
-
-      if (capture->queryctrl.type == V4L2_CTRL_TYPE_MENU)
-        v4l2_scan_controls_enumerate_menu(capture);
 
     } else {
 

@@ -253,6 +253,39 @@ struct HWFeatures
             f.have[CV_CPU_AVX]    = (((cpuid_data[2] & (1<<28)) != 0)&&((cpuid_data[2] & (1<<27)) != 0));//OS uses XSAVE_XRSTORE and CPU support AVX
         }
 
+    #if defined _MSC_VER && (defined _M_IX86 || defined _M_X64)
+        __cpuidex(cpuid_data, 7, 0);
+    #elif defined __GNUC__ && (defined __i386__ || defined __x86_64__)
+        #ifdef __x86_64__
+        asm __volatile__
+        (
+         "movl $7, %%eax\n\t"
+         "movl $0, %%ecx\n\t"
+         "cpuid\n\t"
+         :[eax]"=a"(cpuid_data[0]),[ebx]"=b"(cpuid_data[1]),[ecx]"=c"(cpuid_data[2]),[edx]"=d"(cpuid_data[3])
+         :
+         : "cc"
+        );
+        #else
+        asm volatile
+        (
+         "pushl %%ebx\n\t"
+         "movl $7,%%eax\n\t"
+         "movl $0,%%ecx\n\t"
+         "cpuid\n\t"
+         "popl %%ebx\n\t"
+         : "=a"(cpuid_data[0]), "=b"(cpuid_data[1]), "=c"(cpuid_data[2]), "=d"(cpuid_data[3])
+         :
+         : "cc"
+        );
+        #endif
+    #endif
+
+        if( f.x86_family >= 6 )
+        {
+            f.have[CV_CPU_AVX2] = (cpuid_data[1] & (1<<5)) != 0;
+        }
+
         return f;
     }
 
@@ -421,27 +454,23 @@ string format( const char* fmt, ... )
 
 string tempfile( const char* suffix )
 {
-#ifdef HAVE_WINRT
-    std::wstring temp_dir = L"";
-    const wchar_t* opencv_temp_dir = _wgetenv(L"OPENCV_TEMP_PATH");
-    if (opencv_temp_dir)
-        temp_dir = std::wstring(opencv_temp_dir);
-#else
+    string fname;
+#ifndef HAVE_WINRT
     const char *temp_dir = getenv("OPENCV_TEMP_PATH");
 #endif
-    string fname;
 
 #if defined WIN32 || defined _WIN32
 #ifdef HAVE_WINRT
     RoInitialize(RO_INIT_MULTITHREADED);
-    std::wstring temp_dir2;
-    if (temp_dir.empty())
-        temp_dir = GetTempPathWinRT();
+    std::wstring temp_dir = L"";
+    const wchar_t* opencv_temp_dir = GetTempPathWinRT().c_str();
+    if (opencv_temp_dir)
+        temp_dir = std::wstring(opencv_temp_dir);
 
     std::wstring temp_file;
     temp_file = GetTempFileNameWinRT(L"ocv");
     if (temp_file.empty())
-        return std::string();
+        return string();
 
     temp_file = temp_dir + std::wstring(L"\\") + temp_file;
     DeleteFileW(temp_file.c_str());
@@ -449,7 +478,7 @@ string tempfile( const char* suffix )
     char aname[MAX_PATH];
     size_t copied = wcstombs(aname, temp_file.c_str(), MAX_PATH);
     CV_Assert((copied != MAX_PATH) && (copied != (size_t)-1));
-    fname = std::string(aname);
+    fname = string(aname);
     RoUninitialize();
 #else
     char temp_dir2[MAX_PATH] = { 0 };
@@ -980,7 +1009,9 @@ public:
 };
 
 #ifdef WIN32
+#ifdef _MSC_VER
 #pragma warning(disable:4505) // unreferenced local function has been removed
+#endif
 
 #ifdef HAVE_WINRT
     // using C++11 thread attribute for local thread data
@@ -1127,17 +1158,24 @@ public:
         }
     }
 };
-static TLSContainerStorage tlsContainerStorage;
+
+// This is a wrapper function that will ensure 'tlsContainerStorage' is constructed on first use.
+// For more information: http://www.parashift.com/c++-faq/static-init-order-on-first-use.html
+static TLSContainerStorage& getTLSContainerStorage()
+{
+    static TLSContainerStorage *tlsContainerStorage = new TLSContainerStorage();
+    return *tlsContainerStorage;
+}
 
 TLSDataContainer::TLSDataContainer()
     : key_(-1)
 {
-    key_ = tlsContainerStorage.allocateKey(this);
+    key_ = getTLSContainerStorage().allocateKey(this);
 }
 
 TLSDataContainer::~TLSDataContainer()
 {
-    tlsContainerStorage.releaseKey(key_, this);
+    getTLSContainerStorage().releaseKey(key_, this);
     key_ = -1;
 }
 
@@ -1162,7 +1200,7 @@ TLSStorage::~TLSStorage()
         void*& data = tlsData_[i];
         if (data)
         {
-            tlsContainerStorage.destroyData(i, data);
+            getTLSContainerStorage().destroyData(i, data);
             data = NULL;
         }
     }

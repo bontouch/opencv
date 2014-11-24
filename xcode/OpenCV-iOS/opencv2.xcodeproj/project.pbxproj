@@ -390,13 +390,15 @@
 		2A0CA91916ECDD250003C061 /* stereobm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A0CA2C716ECB5CB0003C061 /* stereobm.cpp */; };
 		2A0CA91A16ECDD320003C061 /* stereosgbm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A0CA2C816ECB5CB0003C061 /* stereosgbm.cpp */; };
 		2A0CA91B16ECDD320003C061 /* triangulate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A0CA2C916ECB5CB0003C061 /* triangulate.cpp */; };
+		2A96FBE81A2369ED00CD0C9E /* affine.hpp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A96FBE71A23699000CD0C9E /* affine.hpp */; };
+		2A96FBF21A23703100CD0C9E /* imgwarp_avx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A96FBED1A23703100CD0C9E /* imgwarp_avx.cpp */; };
+		2A96FBF31A23703100CD0C9E /* imgwarp_avx2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A96FBF01A23703100CD0C9E /* imgwarp_avx2.cpp */; };
 		2A9A835717A9C0BC006991DF /* glob.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A9A835617A9C0BC006991DF /* glob.cpp */; };
 		2A9A835A17A9C202006991DF /* cap_msmf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A9A835817A9C202006991DF /* cap_msmf.cpp */; };
 		2A9A835B17A9C202006991DF /* ios_conversions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A9A835917A9C202006991DF /* ios_conversions.mm */; };
 		2A9A835D17A9C21A006991DF /* clahe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A9A835C17A9C21A006991DF /* clahe.cpp */; };
 		2AA4EF9118D0AE9C009461DC /* sift.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA4EF7E18D0AE9C009461DC /* sift.cpp */; };
 		2AA4EF9218D0AE9C009461DC /* surf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA4EF7F18D0AE9C009461DC /* surf.cpp */; };
-		2AA4EF9318D0AE9C009461DC /* surf.ocl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA4EF8018D0AE9C009461DC /* surf.ocl.cpp */; };
 		2AA4EF9418D0AE9C009461DC /* surf_gpu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA4EF8118D0AE9C009461DC /* surf_gpu.cpp */; };
 		2AA4EF9D18D0AEF6009461DC /* features2d.hpp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2AA4EF6D18D0AE9C009461DC /* features2d.hpp */; };
 		2AA4EF9E18D0AEF6009461DC /* gpu.hpp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2AA4EF6E18D0AE9C009461DC /* gpu.hpp */; };
@@ -613,6 +615,7 @@
 			dstPath = Headers/core;
 			dstSubfolderSpec = 16;
 			files = (
+				2A96FBE81A2369ED00CD0C9E /* affine.hpp in CopyFiles */,
 				2A0CA8A816ECDA160003C061 /* core.hpp in CopyFiles */,
 				2A0CA8A916ECDA160003C061 /* core_c.h in CopyFiles */,
 				2A0CA8AA16ECDA160003C061 /* cuda_devptrs.hpp in CopyFiles */,
@@ -1204,6 +1207,11 @@
 		2A0CA8F516ECDC850003C061 /* fast_nlmeans_multi_denoising_invoker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = fast_nlmeans_multi_denoising_invoker.hpp; sourceTree = "<group>"; };
 		2A0CA8F616ECDC850003C061 /* inpaint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = inpaint.cpp; sourceTree = "<group>"; };
 		2A0CA8F816ECDC850003C061 /* precomp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = precomp.hpp; sourceTree = "<group>"; };
+		2A96FBE71A23699000CD0C9E /* affine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = affine.hpp; sourceTree = "<group>"; };
+		2A96FBED1A23703100CD0C9E /* imgwarp_avx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = imgwarp_avx.cpp; sourceTree = "<group>"; };
+		2A96FBEE1A23703100CD0C9E /* imgwarp_avx.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = imgwarp_avx.hpp; sourceTree = "<group>"; };
+		2A96FBF01A23703100CD0C9E /* imgwarp_avx2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = imgwarp_avx2.cpp; sourceTree = "<group>"; };
+		2A96FBF11A23703100CD0C9E /* imgwarp_avx2.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = imgwarp_avx2.hpp; sourceTree = "<group>"; };
 		2A9A835617A9C0BC006991DF /* glob.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = glob.cpp; sourceTree = "<group>"; };
 		2A9A835817A9C202006991DF /* cap_msmf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cap_msmf.cpp; sourceTree = "<group>"; };
 		2A9A835917A9C202006991DF /* ios_conversions.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ios_conversions.mm; sourceTree = "<group>"; };
@@ -1218,7 +1226,6 @@
 		2AA4EF7D18D0AE9C009461DC /* precomp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = precomp.hpp; sourceTree = "<group>"; };
 		2AA4EF7E18D0AE9C009461DC /* sift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sift.cpp; sourceTree = "<group>"; };
 		2AA4EF7F18D0AE9C009461DC /* surf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = surf.cpp; sourceTree = "<group>"; };
-		2AA4EF8018D0AE9C009461DC /* surf.ocl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = surf.ocl.cpp; sourceTree = "<group>"; };
 		2AA4EF8118D0AE9C009461DC /* surf_gpu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = surf_gpu.cpp; sourceTree = "<group>"; };
 		2AA4EFB418D0AFF4009461DC /* autocalib.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = autocalib.hpp; sourceTree = "<group>"; };
 		2AA4EFB518D0AFF4009461DC /* blenders.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = blenders.hpp; sourceTree = "<group>"; };
@@ -1423,6 +1430,7 @@
 		2A0CA09616ECB0290003C061 /* core */ = {
 			isa = PBXGroup;
 			children = (
+				2A96FBE71A23699000CD0C9E /* affine.hpp */,
 				2A0CA09716ECB0290003C061 /* core.hpp */,
 				2A0CA09816ECB0290003C061 /* core_c.h */,
 				2A0CA09916ECB0290003C061 /* cuda_devptrs.hpp */,
@@ -1686,6 +1694,8 @@
 		2A0CA20516ECB4090003C061 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				2A96FBEC1A23703100CD0C9E /* avx */,
+				2A96FBEF1A23703100CD0C9E /* avx2 */,
 				2A9A835C17A9C21A006991DF /* clahe.cpp */,
 				2A0CA20616ECB4090003C061 /* _geom.h */,
 				2A0CA20716ECB4090003C061 /* _list.h */,
@@ -2363,6 +2373,24 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		2A96FBEC1A23703100CD0C9E /* avx */ = {
+			isa = PBXGroup;
+			children = (
+				2A96FBED1A23703100CD0C9E /* imgwarp_avx.cpp */,
+				2A96FBEE1A23703100CD0C9E /* imgwarp_avx.hpp */,
+			);
+			path = avx;
+			sourceTree = "<group>";
+		};
+		2A96FBEF1A23703100CD0C9E /* avx2 */ = {
+			isa = PBXGroup;
+			children = (
+				2A96FBF01A23703100CD0C9E /* imgwarp_avx2.cpp */,
+				2A96FBF11A23703100CD0C9E /* imgwarp_avx2.hpp */,
+			);
+			path = avx2;
+			sourceTree = "<group>";
+		};
 		2AA4EF6518D0AE9C009461DC /* nonfree */ = {
 			isa = PBXGroup;
 			children = (
@@ -2409,7 +2437,6 @@
 				2AA4EF7D18D0AE9C009461DC /* precomp.hpp */,
 				2AA4EF7E18D0AE9C009461DC /* sift.cpp */,
 				2AA4EF7F18D0AE9C009461DC /* surf.cpp */,
-				2AA4EF8018D0AE9C009461DC /* surf.ocl.cpp */,
 				2AA4EF8118D0AE9C009461DC /* surf_gpu.cpp */,
 			);
 			path = src;
@@ -2666,7 +2693,7 @@
 		2A0CA06816ECAFD00003C061 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = OpenCV;
 			};
 			buildConfigurationList = 2A0CA06B16ECAFD00003C061 /* Build configuration list for PBXProject "opencv2" */;
@@ -2822,7 +2849,6 @@
 				2A0CA55716ECB6A40003C061 /* blobtrackanalysistrackdist.cpp in Sources */,
 				2A0CA55816ECB6A40003C061 /* blobtrackgen1.cpp in Sources */,
 				2A0CA55916ECB6A40003C061 /* blobtrackgenyml.cpp in Sources */,
-				2AA4EF9318D0AE9C009461DC /* surf.ocl.cpp in Sources */,
 				2A0CA55A16ECB6A40003C061 /* blobtrackingauto.cpp in Sources */,
 				2A0CA55B16ECB6A40003C061 /* blobtrackingcc.cpp in Sources */,
 				2A0CA55C16ECB6A40003C061 /* blobtrackingccwithcr.cpp in Sources */,
@@ -2847,6 +2873,7 @@
 				2A0CA56E16ECB6A40003C061 /* decomppoly.cpp in Sources */,
 				2A0CA56F16ECB6A40003C061 /* dominants.cpp in Sources */,
 				2A0CA57016ECB6A40003C061 /* dpstereo.cpp in Sources */,
+				2A96FBF21A23703100CD0C9E /* imgwarp_avx.cpp in Sources */,
 				2A0CA57116ECB6A40003C061 /* eigenobjects.cpp in Sources */,
 				2A0CA57216ECB6A40003C061 /* em.cpp in Sources */,
 				2A0CA57316ECB6A40003C061 /* enmin.cpp in Sources */,
@@ -2975,6 +3002,7 @@
 				2A0CA6CD16ECB8BA0003C061 /* matching.cpp in Sources */,
 				2A0CA6CE16ECB8BA0003C061 /* normal_lut.i in Sources */,
 				2A0CA6CF16ECB8BA0003C061 /* objdetect_init.cpp in Sources */,
+				2A96FBF31A23703100CD0C9E /* imgwarp_avx2.cpp in Sources */,
 				2A0CA6D116ECB8BA0003C061 /* resizeimg.cpp in Sources */,
 				2A0CA6D216ECB8BA0003C061 /* routine.cpp in Sources */,
 				2A0CA84C16ECBCA70003C061 /* bitstrm.cpp in Sources */,
@@ -3111,6 +3139,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"ARCHS[sdk=iphonesimulator*]" = (
+					i386,
+					x86_64,
+				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -3134,10 +3166,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				STRIP_STYLE = "non-global";
+				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 				WARNING_CFLAGS = (
 					"-Wno-deprecated-register",
 					"-Wno-tautological-compare",
@@ -3149,6 +3182,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"ARCHS[sdk=iphonesimulator*]" = (
+					i386,
+					x86_64,
+				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -3165,10 +3202,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				STRIP_STYLE = "non-global";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 				WARNING_CFLAGS = (
 					"-Wno-deprecated-register",
 					"-Wno-tautological-compare",

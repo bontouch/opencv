@@ -82,6 +82,9 @@
 		2A5004D418CF1D8400EB38E7 /* hybridtracker.hpp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2AF6857A17D75B9B0038C1AB /* hybridtracker.hpp */; };
 		2A5004D518CF1D8400EB38E7 /* openfabmap.hpp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2AF6857B17D75B9B0038C1AB /* openfabmap.hpp */; };
 		2A5004D618CF1D8400EB38E7 /* retina.hpp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2AF6857C17D75B9B0038C1AB /* retina.hpp */; };
+		2A96FBEB1A236F4200CD0C9E /* affine.hpp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A96FBEA1A236F1E00CD0C9E /* affine.hpp */; };
+		2A96FBFA1A23706500CD0C9E /* imgwarp_avx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A96FBF51A23706500CD0C9E /* imgwarp_avx.cpp */; };
+		2A96FBFB1A23706500CD0C9E /* imgwarp_avx2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2A96FBF81A23706500CD0C9E /* imgwarp_avx2.cpp */; };
 		2AA4F02B18D0B1DF009461DC /* autocalib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA4F01918D0B1DF009461DC /* autocalib.cpp */; };
 		2AA4F02C18D0B1DF009461DC /* blenders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA4F01A18D0B1DF009461DC /* blenders.cpp */; };
 		2AA4F02D18D0B1DF009461DC /* camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2AA4F01B18D0B1DF009461DC /* camera.cpp */; };
@@ -108,7 +111,6 @@
 		2ADC7B3118CF626700C325CA /* nonfree_init.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2ADC7B1C18CF626700C325CA /* nonfree_init.cpp */; };
 		2ADC7B3318CF626700C325CA /* sift.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2ADC7B2018CF626700C325CA /* sift.cpp */; };
 		2ADC7B3418CF626700C325CA /* surf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2ADC7B2118CF626700C325CA /* surf.cpp */; };
-		2ADC7B3518CF626700C325CA /* surf.ocl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2ADC7B2218CF626700C325CA /* surf.ocl.cpp */; };
 		2ADC7B3618CF626700C325CA /* surf_gpu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2ADC7B2318CF626700C325CA /* surf_gpu.cpp */; };
 		2ADC7B3F18CF62A600C325CA /* features2d.hpp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2ADC7B0F18CF626700C325CA /* features2d.hpp */; };
 		2ADC7B4018CF62A600C325CA /* gpu.hpp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2ADC7B1018CF626700C325CA /* gpu.hpp */; };
@@ -498,6 +500,7 @@
 			dstPath = Headers/opencv2/core;
 			dstSubfolderSpec = 16;
 			files = (
+				2A96FBEB1A236F4200CD0C9E /* affine.hpp in CopyFiles */,
 				2A1D5FCD17ECEF4900680A97 /* core.hpp in CopyFiles */,
 				2A1D5FCE17ECEF4900680A97 /* core_c.h in CopyFiles */,
 				2A1D5FCF17ECEF4900680A97 /* cuda_devptrs.hpp in CopyFiles */,
@@ -723,6 +726,11 @@
 
 /* Begin PBXFileReference section */
 		2A1D515F18CF0BD80029CF86 /* opencv.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = opencv.hpp; sourceTree = "<group>"; };
+		2A96FBEA1A236F1E00CD0C9E /* affine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = affine.hpp; sourceTree = "<group>"; };
+		2A96FBF51A23706500CD0C9E /* imgwarp_avx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = imgwarp_avx.cpp; sourceTree = "<group>"; };
+		2A96FBF61A23706500CD0C9E /* imgwarp_avx.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = imgwarp_avx.hpp; sourceTree = "<group>"; };
+		2A96FBF81A23706500CD0C9E /* imgwarp_avx2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = imgwarp_avx2.cpp; sourceTree = "<group>"; };
+		2A96FBF91A23706500CD0C9E /* imgwarp_avx2.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = imgwarp_avx2.hpp; sourceTree = "<group>"; };
 		2AA4F00718D0B1DF009461DC /* autocalib.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = autocalib.hpp; sourceTree = "<group>"; };
 		2AA4F00818D0B1DF009461DC /* blenders.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = blenders.hpp; sourceTree = "<group>"; };
 		2AA4F00918D0B1DF009461DC /* camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = camera.hpp; sourceTree = "<group>"; };
@@ -760,7 +768,6 @@
 		2ADC7B1F18CF626700C325CA /* precomp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = precomp.hpp; sourceTree = "<group>"; };
 		2ADC7B2018CF626700C325CA /* sift.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sift.cpp; sourceTree = "<group>"; };
 		2ADC7B2118CF626700C325CA /* surf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = surf.cpp; sourceTree = "<group>"; };
-		2ADC7B2218CF626700C325CA /* surf.ocl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = surf.ocl.cpp; sourceTree = "<group>"; };
 		2ADC7B2318CF626700C325CA /* surf_gpu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = surf_gpu.cpp; sourceTree = "<group>"; };
 		2AF6843B17D75A290038C1AB /* libopencv2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libopencv2.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AF6844417D75B0D0038C1AB /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
@@ -1763,6 +1770,24 @@
 			path = ../../include/opencv2;
 			sourceTree = "<group>";
 		};
+		2A96FBF41A23706500CD0C9E /* avx */ = {
+			isa = PBXGroup;
+			children = (
+				2A96FBF51A23706500CD0C9E /* imgwarp_avx.cpp */,
+				2A96FBF61A23706500CD0C9E /* imgwarp_avx.hpp */,
+			);
+			path = avx;
+			sourceTree = "<group>";
+		};
+		2A96FBF71A23706500CD0C9E /* avx2 */ = {
+			isa = PBXGroup;
+			children = (
+				2A96FBF81A23706500CD0C9E /* imgwarp_avx2.cpp */,
+				2A96FBF91A23706500CD0C9E /* imgwarp_avx2.hpp */,
+			);
+			path = avx2;
+			sourceTree = "<group>";
+		};
 		2AA4EFF418D0B1DF009461DC /* stitching */ = {
 			isa = PBXGroup;
 			children = (
@@ -1892,7 +1917,6 @@
 				2ADC7B1F18CF626700C325CA /* precomp.hpp */,
 				2ADC7B2018CF626700C325CA /* sift.cpp */,
 				2ADC7B2118CF626700C325CA /* surf.cpp */,
-				2ADC7B2218CF626700C325CA /* surf.ocl.cpp */,
 				2ADC7B2318CF626700C325CA /* surf_gpu.cpp */,
 			);
 			path = src;
@@ -2442,6 +2466,7 @@
 		2AF685BF17D75B9C0038C1AB /* core */ = {
 			isa = PBXGroup;
 			children = (
+				2A96FBEA1A236F1E00CD0C9E /* affine.hpp */,
 				2AF685C017D75B9C0038C1AB /* core.hpp */,
 				2AF685C117D75B9C0038C1AB /* core_c.h */,
 				2AF685C217D75B9C0038C1AB /* cuda_devptrs.hpp */,
@@ -3186,6 +3211,8 @@
 		2AF6883517D75B9D0038C1AB /* src */ = {
 			isa = PBXGroup;
 			children = (
+				2A96FBF41A23706500CD0C9E /* avx */,
+				2A96FBF71A23706500CD0C9E /* avx2 */,
 				2AF6883617D75B9D0038C1AB /* _geom.h */,
 				2AF6883717D75B9D0038C1AB /* _list.h */,
 				2AF6883817D75B9D0038C1AB /* accum.cpp */,
@@ -3771,7 +3798,7 @@
 		2AF6843317D75A290038C1AB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = Bontouch;
 			};
 			buildConfigurationList = 2AF6843617D75A290038C1AB /* Build configuration list for PBXProject "opencv2" */;
@@ -3917,7 +3944,6 @@
 				2AF68A1917D75B9D0038C1AB /* spinimages.cpp in Sources */,
 				2AF68A1A17D75B9D0038C1AB /* stereovar.cpp in Sources */,
 				2AF68A4117D75B9D0038C1AB /* algorithm.cpp in Sources */,
-				2ADC7B3518CF626700C325CA /* surf.ocl.cpp in Sources */,
 				2AF68A4217D75B9D0038C1AB /* alloc.cpp in Sources */,
 				2AF68A4317D75B9D0038C1AB /* arithm.cpp in Sources */,
 				2AF68A4417D75B9D0038C1AB /* array.cpp in Sources */,
@@ -3986,6 +4012,7 @@
 				2AF68AF017D75B9D0038C1AB /* grfmt_bmp.cpp in Sources */,
 				2AF68AF217D75B9D0038C1AB /* grfmt_exr.cpp in Sources */,
 				2AA4F02D18D0B1DF009461DC /* camera.cpp in Sources */,
+				2A96FBFA1A23706500CD0C9E /* imgwarp_avx.cpp in Sources */,
 				2AF68AF417D75B9D0038C1AB /* grfmt_imageio.cpp in Sources */,
 				2AA4F03318D0B1DF009461DC /* util.cpp in Sources */,
 				2AF68AF617D75B9D0038C1AB /* grfmt_jpeg.cpp in Sources */,
@@ -3996,6 +4023,7 @@
 				2AF68B0017D75B9D0038C1AB /* grfmt_tiff.cpp in Sources */,
 				2AF68B0417D75B9D0038C1AB /* loadsave.cpp in Sources */,
 				2AF68B0717D75B9D0038C1AB /* utils.cpp in Sources */,
+				2A96FBFB1A23706500CD0C9E /* imgwarp_avx2.cpp in Sources */,
 				2AF68B0917D75B9D0038C1AB /* window.cpp in Sources */,
 				2AF68B0B17D75B9D0038C1AB /* window_cocoa.mm in Sources */,
 				2AF68B0C17D75B9D0038C1AB /* window_gtk.cpp in Sources */,
@@ -4249,6 +4277,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_CONSTANT_CONVERSION = NO;
+				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "opencv2/opencv2-Prefix.pch";
@@ -4286,6 +4315,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_CONSTANT_CONVERSION = NO;
+				COMBINE_HIDPI_IMAGES = YES;
 				EXECUTABLE_PREFIX = lib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "opencv2/opencv2-Prefix.pch";

@@ -128,6 +128,7 @@ OCV_OPTION(WITH_1394           "Include IEEE1394 support"                    ON 
 OCV_OPTION(WITH_AVFOUNDATION   "Use AVFoundation for Video I/O"              ON   IF IOS)
 OCV_OPTION(WITH_CARBON         "Use Carbon for UI instead of Cocoa"          OFF  IF APPLE )
 OCV_OPTION(WITH_CUDA           "Include NVidia Cuda Runtime support"         ON   IF (CMAKE_VERSION VERSION_GREATER "2.8" AND NOT IOS) )
+OCV_OPTION(WITH_VTK            "Include VTK library support (and build opencv_viz module eiher)"             OFF IF (NOT ANDROID AND NOT IOS) )
 OCV_OPTION(WITH_CUFFT          "Include NVidia Cuda Fast Fourier Transform (FFT) library support"            ON  IF (CMAKE_VERSION VERSION_GREATER "2.8" AND NOT IOS) )
 OCV_OPTION(WITH_CUBLAS         "Include NVidia Cuda Basic Linear Algebra Subprograms (BLAS) library support" OFF IF (CMAKE_VERSION VERSION_GREATER "2.8" AND NOT IOS) )
 OCV_OPTION(WITH_NVCUVID        "Include NVidia Video Decoding library support"                               OFF IF (CMAKE_VERSION VERSION_GREATER "2.8" AND NOT ANDROID AND NOT IOS AND NOT APPLE) )
@@ -135,13 +136,14 @@ OCV_OPTION(WITH_EIGEN          "Include Eigen2/Eigen3 support"               ON)
 OCV_OPTION(WITH_VFW            "Include Video for Windows support"           ON   IF WIN32 )
 OCV_OPTION(WITH_FFMPEG         "Include FFMPEG support"                      ON   IF (NOT ANDROID AND NOT IOS))
 OCV_OPTION(WITH_GSTREAMER      "Include Gstreamer support"                   ON   IF (UNIX AND NOT APPLE AND NOT ANDROID) )
+OCV_OPTION(WITH_GSTREAMER_0_10 "Enable Gstreamer 0.10 support (instead of 1.x)"   OFF )
 OCV_OPTION(WITH_GTK            "Include GTK support"                         ON   IF (UNIX AND NOT APPLE AND NOT ANDROID) )
 OCV_OPTION(WITH_IMAGEIO        "ImageIO support for OS X"                    OFF  IF APPLE )
 OCV_OPTION(WITH_IPP            "Include Intel IPP support"                   OFF  IF (MSVC OR X86 OR X86_64) )
 OCV_OPTION(WITH_JASPER         "Include JPEG2K support"                      ON   IF (NOT IOS) )
 OCV_OPTION(WITH_JPEG           "Include JPEG support"                        ON)
 OCV_OPTION(WITH_OPENEXR        "Include ILM support via OpenEXR"             ON   IF (NOT IOS) )
-OCV_OPTION(WITH_OPENGL         "Include OpenGL support"                      OFF  IF (NOT ANDROID AND NOT APPLE) )
+OCV_OPTION(WITH_OPENGL         "Include OpenGL support"                      OFF  IF (NOT ANDROID) )
 OCV_OPTION(WITH_OPENNI         "Include OpenNI support"                      OFF  IF (NOT ANDROID AND NOT IOS) )
 OCV_OPTION(WITH_PNG            "Include PNG support"                         ON)
 OCV_OPTION(WITH_PVAPI          "Include Prosilica GigE support"              ON   IF (NOT ANDROID AND NOT IOS) )
@@ -158,7 +160,7 @@ OCV_OPTION(WITH_V4L            "Include Video 4 Linux support"               ON 
 OCV_OPTION(WITH_LIBV4L         "Use libv4l for Video 4 Linux support"        ON   IF (UNIX AND NOT ANDROID) )
 OCV_OPTION(WITH_DSHOW          "Build HighGUI with DirectShow support"       ON   IF (WIN32 AND NOT ARM) )
 OCV_OPTION(WITH_MSMF           "Build HighGUI with Media Foundation support" OFF  IF WIN32 )
-OCV_OPTION(WITH_XIMEA          "Include XIMEA cameras support"               OFF  IF (NOT ANDROID AND NOT APPLE) )
+OCV_OPTION(WITH_XIMEA          "Include XIMEA cameras support"               OFF  IF (NOT ANDROID) )
 OCV_OPTION(WITH_XINE           "Include Xine support (GPL)"                  OFF  IF (UNIX AND NOT APPLE AND NOT ANDROID) )
 OCV_OPTION(WITH_OPENCL         "Include OpenCL Runtime support"              ON   IF (NOT IOS) )
 OCV_OPTION(WITH_OPENCLAMDFFT   "Include AMD OpenCL FFT library support"      ON   IF (NOT ANDROID AND NOT IOS) )
@@ -197,7 +199,7 @@ OCV_OPTION(INSTALL_C_EXAMPLES       "Install C examples"        OFF )
 OCV_OPTION(INSTALL_PYTHON_EXAMPLES  "Install Python examples"   OFF )
 OCV_OPTION(INSTALL_ANDROID_EXAMPLES "Install Android examples"  OFF IF ANDROID )
 OCV_OPTION(INSTALL_TO_MANGLED_PATHS "Enables mangled install paths, that help with side by side installs." OFF IF (UNIX AND NOT ANDROID AND NOT IOS AND BUILD_SHARED_LIBS) )
-
+OCV_OPTION(INSTALL_TESTS            "Install accuracy and performance test binaries and test data" OFF)
 
 # OpenCV build options
 # ===================================================
@@ -205,6 +207,7 @@ OCV_OPTION(ENABLE_DYNAMIC_CUDA        "Enabled dynamic CUDA linkage"            
 OCV_OPTION(ENABLE_PRECOMPILED_HEADERS "Use precompiled headers"                                  ON   IF (NOT IOS) )
 OCV_OPTION(ENABLE_SOLUTION_FOLDERS    "Solution folder in Visual Studio or in other IDEs"        (MSVC_IDE OR CMAKE_GENERATOR MATCHES Xcode) IF (CMAKE_VERSION VERSION_GREATER "2.8.0") )
 OCV_OPTION(ENABLE_PROFILING           "Enable profiling in the GCC compiler (Add flags: -g -pg)" OFF  IF CMAKE_COMPILER_IS_GNUCXX )
+OCV_OPTION(ENABLE_COVERAGE            "Enable coverage collection with  GCov"                    OFF  IF CMAKE_COMPILER_IS_GNUCXX )
 OCV_OPTION(ENABLE_OMIT_FRAME_POINTER  "Enable -fomit-frame-pointer for GCC"                      ON   IF CMAKE_COMPILER_IS_GNUCXX AND NOT (APPLE AND CMAKE_COMPILER_IS_CLANGCXX) )
 OCV_OPTION(ENABLE_POWERPC             "Enable PowerPC for GCC"                                   ON   IF (CMAKE_COMPILER_IS_GNUCXX AND CMAKE_SYSTEM_PROCESSOR MATCHES powerpc.*) )
 OCV_OPTION(ENABLE_FAST_MATH           "Enable -ffast-math (not recommended for GCC 4.6.x)"       OFF  IF (CMAKE_COMPILER_IS_GNUCXX AND (X86 OR X86_64)) )
@@ -215,12 +218,17 @@ OCV_OPTION(ENABLE_SSSE3               "Enable SSSE3 instructions"               
 OCV_OPTION(ENABLE_SSE41               "Enable SSE4.1 instructions"                               OFF  IF ((CV_ICC OR CMAKE_COMPILER_IS_GNUCXX) AND (X86 OR X86_64)) )
 OCV_OPTION(ENABLE_SSE42               "Enable SSE4.2 instructions"                               OFF  IF (CMAKE_COMPILER_IS_GNUCXX AND (X86 OR X86_64)) )
 OCV_OPTION(ENABLE_AVX                 "Enable AVX instructions"                                  OFF  IF ((MSVC OR CMAKE_COMPILER_IS_GNUCXX) AND (X86 OR X86_64)) )
+OCV_OPTION(ENABLE_AVX2                "Enable AVX2 instructions"                                 OFF  IF ((MSVC OR CMAKE_COMPILER_IS_GNUCXX) AND (X86 OR X86_64)) )
 OCV_OPTION(ENABLE_NEON                "Enable NEON instructions"                                 OFF  IF CMAKE_COMPILER_IS_GNUCXX AND ARM )
 OCV_OPTION(ENABLE_VFPV3               "Enable VFPv3-D32 instructions"                            OFF  IF CMAKE_COMPILER_IS_GNUCXX AND ARM )
 OCV_OPTION(ENABLE_NOISY_WARNINGS      "Show all warnings even if they are too noisy"             OFF )
 OCV_OPTION(OPENCV_WARNINGS_ARE_ERRORS "Treat warnings as errors"                                 OFF )
 OCV_OPTION(ENABLE_WINRT_MODE          "Build with Windows Runtime support"                       OFF  IF WIN32 )
 OCV_OPTION(ENABLE_WINRT_MODE_NATIVE   "Build with Windows Runtime native C++ support"            OFF  IF WIN32 )
+OCV_OPTION(ENABLE_LIBVS2013           "Build VS2013 with Visual Studio 2013 libraries"           OFF  IF WIN32 AND (MSVC_VERSION EQUAL 1800) )
+OCV_OPTION(ENABLE_WINSDK81            "Build VS2013 with Windows 8.1 SDK"                        OFF  IF WIN32 AND (MSVC_VERSION EQUAL 1800) )
+OCV_OPTION(ENABLE_WINPHONESDK80       "Build with Windows Phone 8.0 SDK"                         OFF  IF WIN32 AND (MSVC_VERSION EQUAL 1700) )
+OCV_OPTION(ENABLE_WINPHONESDK81       "Build VS2013 with Windows Phone 8.1 SDK"                  OFF  IF WIN32 AND (MSVC_VERSION EQUAL 1800) )
 
 # uncategorized options
 # ===================================================
@@ -268,13 +276,27 @@ if(WIN32)
     message(STATUS "Can't detect runtime and/or arch")
     set(OpenCV_INSTALL_BINARIES_PREFIX "")
   endif()
+elseif(ANDROID)
+  set(OpenCV_INSTALL_BINARIES_PREFIX "sdk/native/")
 else()
   set(OpenCV_INSTALL_BINARIES_PREFIX "")
 endif()
 
-set(OPENCV_SAMPLES_BIN_INSTALL_PATH "${OpenCV_INSTALL_BINARIES_PREFIX}samples")
+if(ANDROID)
+  set(OPENCV_SAMPLES_BIN_INSTALL_PATH "${OpenCV_INSTALL_BINARIES_PREFIX}samples/${ANDROID_NDK_ABI_NAME}")
+else()
+  set(OPENCV_SAMPLES_BIN_INSTALL_PATH "${OpenCV_INSTALL_BINARIES_PREFIX}samples")
+endif()
 
-set(OPENCV_BIN_INSTALL_PATH "${OpenCV_INSTALL_BINARIES_PREFIX}bin")
+if(ANDROID)
+  set(OPENCV_BIN_INSTALL_PATH "${OpenCV_INSTALL_BINARIES_PREFIX}bin/${ANDROID_NDK_ABI_NAME}")
+else()
+  set(OPENCV_BIN_INSTALL_PATH "${OpenCV_INSTALL_BINARIES_PREFIX}bin")
+endif()
+
+if(NOT OPENCV_TEST_INSTALL_PATH)
+  set(OPENCV_TEST_INSTALL_PATH "${OPENCV_BIN_INSTALL_PATH}")
+endif()
 
 if(ANDROID)
   set(LIBRARY_OUTPUT_PATH         "${OpenCV_BINARY_DIR}/lib/${ANDROID_NDK_ABI_NAME}")
@@ -283,6 +305,7 @@ if(ANDROID)
   set(OPENCV_3P_LIB_INSTALL_PATH  sdk/native/3rdparty/libs/${ANDROID_NDK_ABI_NAME})
   set(OPENCV_CONFIG_INSTALL_PATH  sdk/native/jni)
   set(OPENCV_INCLUDE_INSTALL_PATH sdk/native/jni/include)
+  set(OPENCV_SAMPLES_SRC_INSTALL_PATH samples/native)
 else()
   set(LIBRARY_OUTPUT_PATH         "${OpenCV_BINARY_DIR}/lib")
   set(3P_LIBRARY_OUTPUT_PATH      "${OpenCV_BINARY_DIR}/3rdparty/lib${LIB_SUFFIX}")
@@ -293,9 +316,11 @@ else()
       set(OPENCV_LIB_INSTALL_PATH   "${OpenCV_INSTALL_BINARIES_PREFIX}lib${LIB_SUFFIX}")
     endif()
     set(OPENCV_3P_LIB_INSTALL_PATH  "${OpenCV_INSTALL_BINARIES_PREFIX}staticlib${LIB_SUFFIX}")
+    set(OPENCV_SAMPLES_SRC_INSTALL_PATH    samples/native)
   else()
     set(OPENCV_LIB_INSTALL_PATH     lib${LIB_SUFFIX})
     set(OPENCV_3P_LIB_INSTALL_PATH  share/OpenCV/3rdparty/${OPENCV_LIB_INSTALL_PATH})
+    set(OPENCV_SAMPLES_SRC_INSTALL_PATH    share/OpenCV/samples)
   endif()
   set(OPENCV_INCLUDE_INSTALL_PATH "include")
 
@@ -427,6 +452,19 @@ include(cmake/OpenCVPCHSupport.cmake)
 include(cmake/OpenCVModule.cmake)
 
 # ----------------------------------------------------------------------------
+#  Detect endianness of build platform
+# ----------------------------------------------------------------------------
+
+if(CMAKE_SYSTEM_NAME STREQUAL iOS)
+  # test_big_endian needs try_compile, which doesn't work for iOS
+  # http://public.kitware.com/Bug/view.php?id=12288
+  set(WORDS_BIGENDIAN 0)
+else()
+  include(TestBigEndian)
+  test_big_endian(WORDS_BIGENDIAN)
+endif()
+
+# ----------------------------------------------------------------------------
 #  Detect 3rd-party libraries
 # ----------------------------------------------------------------------------
 
@@ -434,7 +472,6 @@ include(cmake/OpenCVFindLibsGrfmt.cmake)
 include(cmake/OpenCVFindLibsGUI.cmake)
 include(cmake/OpenCVFindLibsVideo.cmake)
 include(cmake/OpenCVFindLibsPerf.cmake)
-
 
 # ----------------------------------------------------------------------------
 #  Detect other 3rd-party libraries/tools
@@ -470,6 +507,9 @@ endif()
 if(WITH_OPENCL)
   include(cmake/OpenCVDetectOpenCL.cmake)
 endif()
+
+# --- VTK support ---
+include(cmake/OpenCVDetectVTK.cmake)
 
 # ----------------------------------------------------------------------------
 # Add CUDA libraries (needed for apps/tools, samples)
@@ -557,6 +597,54 @@ include(cmake/OpenCVGenConfig.cmake)
 
 # Generate Info.plist for the IOS framework
 include(cmake/OpenCVGenInfoPlist.cmake)
+
+# Generate environment setup file
+if(INSTALL_TESTS AND OPENCV_TEST_DATA_PATH AND UNIX)
+  if(ANDROID)
+    get_filename_component(TEST_PATH ${OPENCV_TEST_INSTALL_PATH} DIRECTORY)
+    configure_file("${CMAKE_CURRENT_SOURCE_DIR}/cmake/templates/opencv_run_all_tests_android.sh.in"
+                   "${CMAKE_BINARY_DIR}/unix-install/opencv_run_all_tests.sh" @ONLY)
+    install(PROGRAMS "${CMAKE_BINARY_DIR}/unix-install/opencv_run_all_tests.sh"
+            DESTINATION ${CMAKE_INSTALL_PREFIX} COMPONENT tests)
+  else()
+    set(OPENCV_PYTHON_TESTS_LIST "")
+    if(BUILD_opencv_python)
+      file(GLOB py_tests modules/python/test/*.py)
+      install(PROGRAMS ${py_tests} DESTINATION ${OPENCV_TEST_INSTALL_PATH} COMPONENT tests)
+      set(OPENCV_PYTHON_TESTS_LIST "test2.py")
+    endif()
+    configure_file("${CMAKE_CURRENT_SOURCE_DIR}/cmake/templates/opencv_testing.sh.in"
+                   "${CMAKE_BINARY_DIR}/unix-install/opencv_testing.sh" @ONLY)
+    install(FILES "${CMAKE_BINARY_DIR}/unix-install/opencv_testing.sh"
+            DESTINATION /etc/profile.d/ COMPONENT tests)
+    configure_file("${CMAKE_CURRENT_SOURCE_DIR}/cmake/templates/opencv_run_all_tests_unix.sh.in"
+                   "${CMAKE_BINARY_DIR}/unix-install/opencv_run_all_tests.sh" @ONLY)
+    install(PROGRAMS "${CMAKE_BINARY_DIR}/unix-install/opencv_run_all_tests.sh"
+            DESTINATION ${OPENCV_TEST_INSTALL_PATH} COMPONENT tests)
+  endif()
+endif()
+
+if(NOT OPENCV_README_FILE)
+  if(ANDROID)
+    set(OPENCV_README_FILE ${CMAKE_CURRENT_SOURCE_DIR}/platforms/android/README.android)
+  endif()
+endif()
+
+if(NOT OPENCV_LICENSE_FILE)
+  set(OPENCV_LICENSE_FILE ${CMAKE_CURRENT_SOURCE_DIR}/LICENSE)
+endif()
+
+# for UNIX it does not make sense as LICENSE and readme will be part of the package automatically
+if(ANDROID OR NOT UNIX)
+  install(FILES ${OPENCV_LICENSE_FILE}
+        PERMISSIONS OWNER_READ GROUP_READ WORLD_READ
+        DESTINATION ${CMAKE_INSTALL_PREFIX} COMPONENT libs)
+  if(OPENCV_README_FILE)
+    install(FILES ${OPENCV_README_FILE}
+            PERMISSIONS OWNER_READ GROUP_READ WORLD_READ
+            DESTINATION ${CMAKE_INSTALL_PREFIX} COMPONENT libs)
+  endif()
+endif()
 
 # ----------------------------------------------------------------------------
 # Summary:
@@ -668,8 +756,8 @@ if(WIN32)
 status("")
     status("  Windows RT support:" HAVE_WINRT THEN YES ELSE NO)
     if (ENABLE_WINRT_MODE OR ENABLE_WINRT_MODE_NATIVE)
-      status("    Windows SDK v8.0:" ${WINDOWS_SDK_PATH})
-      status("    Visual Studio 2012:" ${VISUAL_STUDIO_PATH})
+      status("  Windows (Phone) SDK v8.0/v8.1:" ${WINDOWS_SDK_PATH})
+      status("  Visual Studio 2012/2013:" ${VISUAL_STUDIO_PATH})
     endif()
 endif(WIN32)
 
@@ -705,6 +793,7 @@ else()
 endif()
 
 status("    OpenGL support:" HAVE_OPENGL THEN "YES (${OPENGL_LIBRARIES})" ELSE NO)
+status("    VTK support:" HAVE_VTK THEN "YES (ver ${VTK_VERSION})" ELSE NO)
 
 # ========================== MEDIA IO ==========================
 status("")
@@ -783,10 +872,12 @@ endif(DEFINED WITH_FFMPEG)
 if(DEFINED WITH_GSTREAMER)
   status("    GStreamer:"      HAVE_GSTREAMER      THEN ""                                         ELSE NO)
   if(HAVE_GSTREAMER)
-    status("      base:"       "YES (ver ${ALIASOF_gstreamer-base-0.10_VERSION})")
-    status("      app:"        "YES (ver ${ALIASOF_gstreamer-app-0.10_VERSION})")
-    status("      video:"      "YES (ver ${ALIASOF_gstreamer-video-0.10_VERSION})")
-  endif()
+    status("      base:"       "YES (ver ${GSTREAMER_BASE_VERSION})")
+    status("      video:"      "YES (ver ${GSTREAMER_VIDEO_VERSION})")
+    status("      app:"        "YES (ver ${GSTREAMER_APP_VERSION})")
+    status("      riff:"       "YES (ver ${GSTREAMER_RIFF_VERSION})")
+    status("      pbutils:"    "YES (ver ${GSTREAMER_PBUTILS_VERSION})")
+  endif(HAVE_GSTREAMER)
 endif(DEFINED WITH_GSTREAMER)
 
 if(DEFINED WITH_OPENNI)
@@ -827,8 +918,9 @@ if(DEFINED WITH_V4L)
   else()
     set(HAVE_CAMV4L2_STR "NO")
   endif()
-  status("    V4L/V4L2:"       HAVE_LIBV4L         THEN "Using libv4l (ver ${ALIASOF_libv4l1_VERSION})"
-                                                   ELSE "${HAVE_CAMV4L_STR}/${HAVE_CAMV4L2_STR}")
+  status("    V4L/V4L2:"       HAVE_LIBV4L
+             THEN "Using libv4l1 (ver ${ALIASOF_libv4l1_VERSION}) / libv4l2 (ver ${ALIASOF_libv4l2_VERSION})"
+             ELSE "${HAVE_CAMV4L_STR}/${HAVE_CAMV4L2_STR}")
 endif(DEFINED WITH_V4L)
 
 if(DEFINED WITH_DSHOW)
@@ -975,3 +1067,9 @@ ocv_finalize_status()
 if("${CMAKE_CURRENT_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
   message(WARNING "The source directory is the same as binary directory. \"make clean\" may damage the source tree")
 endif()
+
+# ----------------------------------------------------------------------------
+# CPack stuff
+# ----------------------------------------------------------------------------
+
+include(cmake/OpenCVPackaging.cmake)

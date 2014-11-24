@@ -20,8 +20,6 @@ ocv_module_include_directories(
     "${CMAKE_CURRENT_SOURCE_DIR}/src2"
     )
 
-
-
 set(opencv_hdrs
     "${OPENCV_MODULE_opencv_core_LOCATION}/include/opencv2/core/core.hpp"
     "${OPENCV_MODULE_opencv_flann_LOCATION}/include/opencv2/flann/miniflann.hpp"
@@ -108,17 +106,17 @@ endif()
 if(WIN32)
   set(PYTHON_INSTALL_ARCHIVE "")
 else()
-  set(PYTHON_INSTALL_ARCHIVE ARCHIVE DESTINATION ${PYTHON_PACKAGES_PATH} COMPONENT main)
+  set(PYTHON_INSTALL_ARCHIVE ARCHIVE DESTINATION ${PYTHON_PACKAGES_PATH} COMPONENT python)
 endif()
 
 if(NOT INSTALL_CREATE_DISTRIB)
   install(TARGETS ${the_module}
           ${PYTHON_INSTALL_CONFIGURATIONS}
-          RUNTIME DESTINATION ${PYTHON_PACKAGES_PATH} COMPONENT main
-          LIBRARY DESTINATION ${PYTHON_PACKAGES_PATH} COMPONENT main
+          RUNTIME DESTINATION ${PYTHON_PACKAGES_PATH} COMPONENT python
+          LIBRARY DESTINATION ${PYTHON_PACKAGES_PATH} COMPONENT python
           ${PYTHON_INSTALL_ARCHIVE}
           )
-  install(FILES src2/cv.py ${PYTHON_INSTALL_CONFIGURATIONS} DESTINATION ${PYTHON_PACKAGES_PATH} COMPONENT main)
+  install(FILES src2/cv.py ${PYTHON_INSTALL_CONFIGURATIONS} DESTINATION ${PYTHON_PACKAGES_PATH} COMPONENT python)
 else()
   if(DEFINED PYTHON_VERSION_MAJOR)
     set(__ver "${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}")
@@ -127,7 +125,7 @@ else()
   endif()
   install(TARGETS ${the_module}
           CONFIGURATIONS Release
-          RUNTIME DESTINATION python/${__ver}/${OpenCV_ARCH} COMPONENT main
-          LIBRARY DESTINATION python/${__ver}/${OpenCV_ARCH} COMPONENT main
+          RUNTIME DESTINATION python/${__ver}/${OpenCV_ARCH} COMPONENT python
+          LIBRARY DESTINATION python/${__ver}/${OpenCV_ARCH} COMPONENT python
           )
 endif()
