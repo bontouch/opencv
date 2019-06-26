@@ -217,8 +217,8 @@ class Builder:
             BUILD_TESTS="OFF",
             BUILD_PERF_TESTS="OFF",
             BUILD_DOCS="OFF",
-            BUILD_ANDROID_EXAMPLES="ON",
-            INSTALL_ANDROID_EXAMPLES="ON",
+            BUILD_ANDROID_EXAMPLES="OFF",
+            INSTALL_ANDROID_EXAMPLES="OFF",
         )
         if self.ninja_path != 'ninja':
             cmake_vars['CMAKE_MAKE_PROGRAM'] = self.ninja_path
